@@ -69,7 +69,10 @@
 body {
     font-family: var(--font-body);
     color: var(--text-primary);
-    background-color: var(--bg-primary);
+    background-image: url('samantha-gades-BlIhVfXbi9s-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
