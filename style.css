@@ -1,5 +1,5 @@
 /* =====================================================
-   NooN Audit Center — Clean White Theme
+   NooN Audit Center — Clean White Theme with Wallpaper
    ===================================================== */
 :root{
   color-scheme: light;
@@ -63,12 +63,16 @@
 }
 html{scroll-behavior:smooth;}
 
-/* ---------- Background ---------- */
+/* ---------- Background Wallpaper ---------- */
 body{
   font-family:var(--font-body);
   color:var(--text-primary);
   background-color:#FFFFFF;
-  background-image:none;
+  background-image:url('samantha-gades-BlIhVfXbi9s-unsplash.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
   min-height:100vh;
   overflow-x:hidden;
   position:relative;
