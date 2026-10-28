@@ -309,13 +309,8 @@
   .ops-stat .value.teal{color:var(--accent-teal);}
 
   /* COUNTRY TABS STYLING */
-  .country-tabs-wrapper {
-    margin-bottom: 24px;
-  }
-  .country-tabs-nav {
-    display: flex;
-    gap: 10px;
-  }
+  .country-tabs-wrapper { margin-bottom: 24px; }
+  .country-tabs-nav { display: flex; gap: 10px; }
   .country-tab-btn {
     background: var(--glass-surface);
     border: 1px solid var(--glass-border);
@@ -615,42 +610,12 @@
         <i class="fa-solid fa-chart-line"></i>
         <span>Dashboard</span>
       </a>
-      <div class="nav-divider">Audit Management</div>
+      <div class="nav-divider" id="sidebarNavTitle">Audit Management (UAE)</div>
       
-      <a href="#freshPutaway" class="nav-item" data-view="freshPutaway">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>
-        <span>UAE Fresh Put Audit</span>
-      </a>
-      
-      <a href="#inbound" class="nav-item" data-view="inbound">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>
-        <span>UAE Inbound Audit</span>
-      </a>
-
-      <a href="#outbound" class="nav-item" data-view="outbound">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>
-        <span>UAE Outbound Audit</span>
-      </a>
-
-      <a href="#afs" class="nav-item" data-view="afs">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>
-        <span>UAE AFS Audit</span>
-      </a>
-
-      <a href="#inventory" class="nav-item" data-view="inventory">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>
-        <span>UAE Inventory Audit</span>
-      </a>
-
-      <a href="#rtv" class="nav-item" data-view="rtv">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>
-        <span>UAE RTV Audit</span>
-      </a>
-
-      <a href="#supermall" class="nav-item" data-view="supermall">
-        <i class="fa-solid fa-store" style="font-size:15px; text-align:center; width:18px;"></i>
-        <span>UAE Supermall Audit</span>
-      </a>
+      <!-- DYNAMIC AUDIT NAVIGATION LINKS CONTAINER -->
+      <div id="dynamicSidebarLinks">
+        <!-- Rendered automatically per country selection -->
+      </div>
     </nav>
 
     <div class="sidebar-footer">
@@ -740,13 +705,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Fresh Putaway Cold Chain Performance</h3>
+          <h3 id="freshPutawayHeader">Fresh Putaway Cold Chain Performance</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="freshPutawayScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="freshPutawayReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -796,13 +761,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Inbound Weekly PO &amp; Receiving Breakdown</h3>
+          <h3 id="inboundHeader">Inbound Weekly PO &amp; Receiving Breakdown</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="inboundScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="inboundReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -852,13 +817,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Outbound Weekly Performance Breakdown</h3>
+          <h3 id="outboundHeader">Outbound Weekly Performance Breakdown</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="outboundScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="outboundReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -908,13 +873,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>AFS &amp; Safety Weekly Reports</h3>
+          <h3 id="afsHeader">AFS &amp; Safety Weekly Reports</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="afsScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="afsReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -964,13 +929,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Inventory Cycle Count &amp; Accuracy Details</h3>
+          <h3 id="inventoryHeader">Inventory Cycle Count &amp; Accuracy Details</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="inventoryScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="inventoryReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -1020,13 +985,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Return to Vendor Processing Logs</h3>
+          <h3 id="rtvHeader">Return to Vendor Processing Logs</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="rtvScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="rtvReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -1076,13 +1041,13 @@
 
       <div class="detail-card glass">
         <div class="detail-header">
-          <h3>Supermall Audit Details</h3>
+          <h3 id="supermallHeader">Supermall Audit Details</h3>
           <div class="action-buttons-group">
-            <a href="https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
+            <a id="supermallScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
               <i class="fa-solid fa-code"></i>
               <span>Script Editor</span>
             </a>
-            <a href="YOUR_SUPERMALL_REPORT_URL" target="_blank" rel="noopener noreferrer" class="external-launch-link">
+            <a id="supermallReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
               <i class="fa-solid fa-chart-pie"></i>
               <span>View Reports</span>
             </a>
@@ -1109,59 +1074,95 @@
 </div>
 
 <script>
-  // COUNTRY TOOLS DATA CONFIGURATION
+  /* ========================================================================
+     MASTER CONFIGURATION - COUNTRY & FUNCTION WISE DATA
+     ======================================================================== 
+     To add or update links for any country:
+     1. Locate the country (UAE, KSA, EGY).
+     2. Update 'launchUrl' (Dashboard card click).
+     3. Update 'scriptEditorUrl' (Script Editor button).
+     4. Update 'reportUrl' (View Reports button).
+  */
   const COUNTRY_DATA = {
     UAE: {
       timeZone: 'Asia/Dubai',
       tools: [
         {
+          sidebarId: 'freshPutaway',
           name: 'UAE Fresh Put Audit',
           desc: 'Monitor temperature standards, cold chain compliance, and fresh goods placement.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec'
+          /* PASTE LINKS BELOW FOR UAE FRESH PUT */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec'
         },
         {
+          sidebarId: 'inbound',
           name: 'UAE Inbound Audit',
           desc: 'Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec'
+          /* PASTE LINKS BELOW FOR UAE INBOUND */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec'
         },
         {
+          sidebarId: 'outbound',
           name: 'UAE Outbound Audit',
           desc: 'Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec'
+          /* PASTE LINKS BELOW FOR UAE OUTBOUND */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
+          scriptEditorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec'
         },
         {
+          sidebarId: 'afs',
           name: 'UAE AFS Audit',
           desc: 'Advanced fulfillment and safety checks, hazard reporting, and operational compliance.',
           class: 'afs',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec'
+          /* PASTE LINKS BELOW FOR UAE AFS */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec'
         },
         {
+          sidebarId: 'inventory',
           name: 'UAE Inventory Audit',
           desc: 'Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec'
+          /* PASTE LINKS BELOW FOR UAE INVENTORY */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec'
         },
         {
+          sidebarId: 'rtv',
           name: 'UAE RTV Audit',
           desc: 'Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.',
           class: 'rtv',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec'
+          /* PASTE LINKS BELOW FOR UAE RTV */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit',
+          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec'
         },
         {
+          sidebarId: 'supermall',
           name: 'UAE Supermall Audit',
           desc: 'Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.',
           class: 'supermall',
           iconHtml: `<i class="fa-solid fa-store"></i>`,
-          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec'
+          /* PASTE LINKS BELOW FOR UAE SUPERMALL */
+          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
+          scriptEditorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit',
+          reportUrl: 'YOUR_UAE_SUPERMALL_REPORT_URL'
         }
       ]
     },
@@ -1169,32 +1170,48 @@
       timeZone: 'Asia/Riyadh',
       tools: [
         {
+          sidebarId: 'freshPutaway',
           name: 'KSA Fresh Put Audit',
           desc: 'Monitor cold chain compliance and fresh goods placement across KSA facilities.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR KSA FRESH PUT */
+          launchUrl: 'YOUR_KSA_FRESH_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_KSA_FRESH_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_KSA_FRESH_REPORT_URL'
         },
         {
+          sidebarId: 'inbound',
           name: 'KSA Inbound Audit',
           desc: 'Inspect incoming shipments, supplier PO compliance, and dock processes in Riyadh & Jeddah FCs.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR KSA INBOUND */
+          launchUrl: 'YOUR_KSA_INBOUND_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_KSA_INBOUND_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_KSA_INBOUND_REPORT_URL'
         },
         {
+          sidebarId: 'outbound',
           name: 'KSA Outbound Audit',
           desc: 'Inspect outbound shipments, pallet compliance, and loading accuracy across KSA hubs.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR KSA OUTBOUND */
+          launchUrl: 'YOUR_KSA_OUTBOUND_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_KSA_OUTBOUND_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_KSA_OUTBOUND_REPORT_URL'
         },
         {
+          sidebarId: 'inventory',
           name: 'KSA Inventory Audit',
           desc: 'Verify bin accuracy, cycle counts, and location integrity for KSA operations.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR KSA INVENTORY */
+          launchUrl: 'YOUR_KSA_INVENTORY_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_KSA_INVENTORY_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_KSA_INVENTORY_REPORT_URL'
         }
       ]
     },
@@ -1202,32 +1219,48 @@
       timeZone: 'Africa/Cairo',
       tools: [
         {
+          sidebarId: 'freshPutaway',
           name: 'EGY Fresh Put Audit',
           desc: 'Egypt fulfillment center cold chain and fresh inventory audits.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR EGY FRESH PUT */
+          launchUrl: 'YOUR_EGY_FRESH_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_EGY_FRESH_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_EGY_FRESH_REPORT_URL'
         },
         {
+          sidebarId: 'inbound',
           name: 'EGY Inbound Audit',
           desc: 'Cairo FC receiving accuracy, vendor compliance, and dock receiving quality checks.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR EGY INBOUND */
+          launchUrl: 'YOUR_EGY_INBOUND_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_EGY_INBOUND_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_EGY_INBOUND_REPORT_URL'
         },
         {
+          sidebarId: 'outbound',
           name: 'EGY Outbound Audit',
           desc: 'Outbound packaging and courier handoff verification in Egypt facilities.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR EGY OUTBOUND */
+          launchUrl: 'YOUR_EGY_OUTBOUND_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_EGY_OUTBOUND_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_EGY_OUTBOUND_REPORT_URL'
         },
         {
+          sidebarId: 'inventory',
           name: 'EGY Inventory Audit',
           desc: 'Local warehouse cycle counts and location audits for Egypt FCs.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          url: '#'
+          /* PASTE LINKS BELOW FOR EGY INVENTORY */
+          launchUrl: 'YOUR_EGY_INVENTORY_LAUNCH_URL',
+          scriptEditorUrl: 'YOUR_EGY_INVENTORY_SCRIPT_EDITOR_URL',
+          reportUrl: 'YOUR_EGY_INVENTORY_REPORT_URL'
         }
       ]
     }
@@ -1238,12 +1271,12 @@
   function switchCountryTab(countryCode) {
     activeCountry = countryCode;
 
-    // Update active tab button styles
+    // 1. Update active tab button styles
     document.querySelectorAll('.country-tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.trim() === countryCode);
     });
 
-    // Update header clock label & modules ready counter
+    // 2. Update Header Clock Label & Modules Counter
     const locationLabel = document.getElementById('clockLocationLabel');
     if (locationLabel) locationLabel.textContent = `Facility local time (${countryCode})`;
 
@@ -1251,11 +1284,25 @@
     const modulesCount = document.getElementById('modulesReadyCount');
     if (modulesCount) modulesCount.textContent = `${countryConfig.tools.length} / ${countryConfig.tools.length}`;
 
-    // Render country tool cards
+    // 3. Update Left Sidebar Title and Dynamic Links based on Country
+    const sidebarTitle = document.getElementById('sidebarNavTitle');
+    if (sidebarTitle) sidebarTitle.textContent = `Audit Management (${countryCode})`;
+
+    const sidebarContainer = document.getElementById('dynamicSidebarLinks');
+    if (sidebarContainer) {
+      sidebarContainer.innerHTML = countryConfig.tools.map(tool => `
+        <a href="#${tool.sidebarId}" class="nav-item" data-view="${tool.sidebarId}">
+          ${tool.iconHtml}
+          <span>${tool.name}</span>
+        </a>
+      `).join('');
+    }
+
+    // 4. Render Dashboard Tool Cards dynamically
     const grid = document.getElementById('toolsCardsGrid');
     if (grid) {
       grid.innerHTML = countryConfig.tools.map(tool => `
-        <div class="audit-card glass ${tool.class}" onclick="window.open('${tool.url}', '_blank')">
+        <div class="audit-card glass ${tool.class}" onclick="window.open('${tool.launchUrl}', '_blank')">
           <div class="card-badge">Operational</div>
           <div class="card-icon">${tool.iconHtml}</div>
           <h3>${tool.name}</h3>
@@ -1268,14 +1315,29 @@
       `).join('');
     }
 
-    // Force instant update on clock tick for new time zone
+    // 5. Update Action Button Links inside Module Detail Views
+    updateModuleActionLinks(countryCode);
+
+    // 6. Force instant clock refresh
     tick();
+  }
+
+  function updateModuleActionLinks(countryCode) {
+    const countryConfig = COUNTRY_DATA[countryCode];
+    countryConfig.tools.forEach(tool => {
+      const scriptBtn = document.getElementById(`${tool.sidebarId}ScriptBtn`);
+      const reportBtn = document.getElementById(`${tool.sidebarId}ReportBtn`);
+      const headerTitle = document.getElementById(`${tool.sidebarId}Header`);
+
+      if (scriptBtn) scriptBtn.href = tool.scriptEditorUrl || '#';
+      if (reportBtn) reportBtn.href = tool.reportUrl || '#';
+      if (headerTitle) headerTitle.textContent = `${tool.name} Performance Details`;
+    });
   }
 
   // Central URL to your deployed Apps Script Dashboard
   const DASHBOARD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec";
 
-  // Module Mapping matching backend keys
   const MODULE_KEYS = {
     'freshPutaway': 'freshPutaway',
     'inbound': 'inbound',
@@ -1453,7 +1515,6 @@
     const timeZone = COUNTRY_DATA[activeCountry]?.timeZone || 'Asia/Dubai';
     const now = new Date();
 
-    // Format local time string per active timezone
     const timeStr = now.toLocaleTimeString('en-US', { timeZone, hour12: false });
     const parts = timeStr.split(':');
     let h = parseInt(parts[0], 10);
