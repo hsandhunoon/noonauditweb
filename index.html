@@ -308,6 +308,38 @@
   .ops-stat .value{font-family:var(--font-display); font-size:17px; font-weight:700;}
   .ops-stat .value.teal{color:var(--accent-teal);}
 
+  /* COUNTRY TABS STYLING */
+  .country-tabs-wrapper {
+    margin-bottom: 24px;
+  }
+  .country-tabs-nav {
+    display: flex;
+    gap: 10px;
+  }
+  .country-tab-btn {
+    background: var(--glass-surface);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+  }
+  .country-tab-btn:hover {
+    background: var(--glass-surface-strong);
+    color: var(--text-primary);
+    border-color: var(--glass-border-strong);
+  }
+  .country-tab-btn.active {
+    background: linear-gradient(135deg, rgba(63,216,194,0.2), rgba(63,216,194,0.05));
+    color: var(--accent-teal);
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 12px var(--accent-teal-glow);
+  }
+
   .section-heading{
     font-family:var(--font-display);
     font-size:16px;
@@ -641,11 +673,11 @@
       </div>
     </header>
 
-    <!-- 1. MAIN DASHBOARD VIEW (Cards Launch Tools Directly) -->
+    <!-- 1. MAIN DASHBOARD VIEW -->
     <div id="view-dashboard" class="view-container active-view">
       <section class="ops-hero glass">
         <div class="ops-clock-block">
-          <div class="ops-clock-label">Facility local time</div>
+          <div class="ops-clock-label" id="clockLocationLabel">Facility local time (UAE)</div>
           <div class="ops-clock" id="liveClock">--:--:-- <span class="ampm" id="liveAmPm">--</span></div>
           <div class="ops-date" id="liveDate">Loading…</div>
         </div>
@@ -656,100 +688,28 @@
           </div>
           <div class="ops-stat">
             <div class="label">Modules ready</div>
-            <div class="value">7 / 7</div>
+            <div class="value" id="modulesReadyCount">7 / 7</div>
           </div>
         </div>
       </section>
+
+      <!-- COUNTRY SELECTION TABS -->
+      <div class="country-tabs-wrapper">
+        <div class="country-tabs-nav">
+          <button class="country-tab-btn active" onclick="switchCountryTab('UAE')">UAE</button>
+          <button class="country-tab-btn" onclick="switchCountryTab('KSA')">KSA</button>
+          <button class="country-tab-btn" onclick="switchCountryTab('EGY')">EGY</button>
+        </div>
+      </div>
 
       <div class="section-heading">
         Active Operational Tools
         <span class="rule"></span>
       </div>
 
-      <div class="cards-grid">
-        <!-- 1. UAE FRESH PUT AUDIT CARD -->
-        <div class="audit-card glass fresh" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg></div>
-          <h3>UAE Fresh Put Audit</h3>
-          <p>Monitor temperature standards, cold chain compliance, and fresh goods placement.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 2. UAE INBOUND AUDIT CARD -->
-        <div class="audit-card glass inbound" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg></div>
-          <h3>UAE Inbound Audit</h3>
-          <p>Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 3. UAE OUTBOUND AUDIT CARD -->
-        <div class="audit-card glass outbound" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg></div>
-          <h3>UAE Outbound Audit</h3>
-          <p>Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 4. UAE AFS AUDIT CARD -->
-        <div class="audit-card glass afs" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg></div>
-          <h3>UAE AFS Audit</h3>
-          <p>Advanced fulfillment and safety checks, hazard reporting, and operational compliance.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 5. UAE INVENTORY AUDIT CARD -->
-        <div class="audit-card glass inventory" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg></div>
-          <h3>UAE Inventory Audit</h3>
-          <p>Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 6. UAE RTV AUDIT CARD -->
-        <div class="audit-card glass rtv" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg></div>
-          <h3>UAE RTV Audit</h3>
-          <p>Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
-
-        <!-- 7. UAE SUPERMALL AUDIT CARD -->
-        <div class="audit-card glass supermall" onclick="window.open('https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec', '_blank')">
-          <div class="card-badge">Operational</div>
-          <div class="card-icon"><i class="fa-solid fa-store"></i></div>
-          <h3>UAE Supermall Audit</h3>
-          <p>Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.</p>
-          <div class="open-btn">
-            <span>Launch Tool</span>
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </div>
-        </div>
+      <!-- DYNAMIC CARDS CONTAINER -->
+      <div class="cards-grid" id="toolsCardsGrid">
+        <!-- Country tools will render dynamically here -->
       </div>
     </div>
 
@@ -1149,6 +1109,169 @@
 </div>
 
 <script>
+  // COUNTRY TOOLS DATA CONFIGURATION
+  const COUNTRY_DATA = {
+    UAE: {
+      timeZone: 'Asia/Dubai',
+      tools: [
+        {
+          name: 'UAE Fresh Put Audit',
+          desc: 'Monitor temperature standards, cold chain compliance, and fresh goods placement.',
+          class: 'fresh',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec'
+        },
+        {
+          name: 'UAE Inbound Audit',
+          desc: 'Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.',
+          class: 'inbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec'
+        },
+        {
+          name: 'UAE Outbound Audit',
+          desc: 'Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.',
+          class: 'outbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec'
+        },
+        {
+          name: 'UAE AFS Audit',
+          desc: 'Advanced fulfillment and safety checks, hazard reporting, and operational compliance.',
+          class: 'afs',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec'
+        },
+        {
+          name: 'UAE Inventory Audit',
+          desc: 'Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.',
+          class: 'inventory',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec'
+        },
+        {
+          name: 'UAE RTV Audit',
+          desc: 'Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.',
+          class: 'rtv',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec'
+        },
+        {
+          name: 'UAE Supermall Audit',
+          desc: 'Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.',
+          class: 'supermall',
+          iconHtml: `<i class="fa-solid fa-store"></i>`,
+          url: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec'
+        }
+      ]
+    },
+    KSA: {
+      timeZone: 'Asia/Riyadh',
+      tools: [
+        {
+          name: 'KSA Fresh Put Audit',
+          desc: 'Monitor cold chain compliance and fresh goods placement across KSA facilities.',
+          class: 'fresh',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'KSA Inbound Audit',
+          desc: 'Inspect incoming shipments, supplier PO compliance, and dock processes in Riyadh & Jeddah FCs.',
+          class: 'inbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'KSA Outbound Audit',
+          desc: 'Inspect outbound shipments, pallet compliance, and loading accuracy across KSA hubs.',
+          class: 'outbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'KSA Inventory Audit',
+          desc: 'Verify bin accuracy, cycle counts, and location integrity for KSA operations.',
+          class: 'inventory',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
+          url: '#'
+        }
+      ]
+    },
+    EGY: {
+      timeZone: 'Africa/Cairo',
+      tools: [
+        {
+          name: 'EGY Fresh Put Audit',
+          desc: 'Egypt fulfillment center cold chain and fresh inventory audits.',
+          class: 'fresh',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'EGY Inbound Audit',
+          desc: 'Cairo FC receiving accuracy, vendor compliance, and dock receiving quality checks.',
+          class: 'inbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'EGY Outbound Audit',
+          desc: 'Outbound packaging and courier handoff verification in Egypt facilities.',
+          class: 'outbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'EGY Inventory Audit',
+          desc: 'Local warehouse cycle counts and location audits for Egypt FCs.',
+          class: 'inventory',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
+          url: '#'
+        }
+      ]
+    }
+  };
+
+  let activeCountry = 'UAE';
+
+  function switchCountryTab(countryCode) {
+    activeCountry = countryCode;
+
+    // Update active tab button styles
+    document.querySelectorAll('.country-tab-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === countryCode);
+    });
+
+    // Update header clock label & modules ready counter
+    const locationLabel = document.getElementById('clockLocationLabel');
+    if (locationLabel) locationLabel.textContent = `Facility local time (${countryCode})`;
+
+    const countryConfig = COUNTRY_DATA[countryCode];
+    const modulesCount = document.getElementById('modulesReadyCount');
+    if (modulesCount) modulesCount.textContent = `${countryConfig.tools.length} / ${countryConfig.tools.length}`;
+
+    // Render country tool cards
+    const grid = document.getElementById('toolsCardsGrid');
+    if (grid) {
+      grid.innerHTML = countryConfig.tools.map(tool => `
+        <div class="audit-card glass ${tool.class}" onclick="window.open('${tool.url}', '_blank')">
+          <div class="card-badge">Operational</div>
+          <div class="card-icon">${tool.iconHtml}</div>
+          <h3>${tool.name}</h3>
+          <p>${tool.desc}</p>
+          <div class="open-btn">
+            <span>Launch Tool</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Force instant update on clock tick for new time zone
+    tick();
+  }
+
   // Central URL to your deployed Apps Script Dashboard
   const DASHBOARD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec";
 
@@ -1294,7 +1417,10 @@
   }
 
   window.addEventListener('hashchange', handleRoute);
-  window.addEventListener('DOMContentLoaded', handleRoute);
+  window.addEventListener('DOMContentLoaded', () => {
+    switchCountryTab('UAE'); // Default view
+    handleRoute();
+  });
 
   // Mobile Menu Controls
   const sidebar = document.getElementById('sidebar');
@@ -1310,7 +1436,7 @@
     overlay.classList.remove('show');
   });
 
-  // Live Clock
+  // Live Clock (Dynamic Timezone Aware)
   const clockEl = document.getElementById('liveClock');
   const ampmEl = document.getElementById('liveAmPm');
   const dateEl = document.getElementById('liveDate');
@@ -1324,13 +1450,22 @@
   }
 
   function tick(){
+    const timeZone = COUNTRY_DATA[activeCountry]?.timeZone || 'Asia/Dubai';
     const now = new Date();
-    let h = now.getHours();
+
+    // Format local time string per active timezone
+    const timeStr = now.toLocaleTimeString('en-US', { timeZone, hour12: false });
+    const parts = timeStr.split(':');
+    let h = parseInt(parts[0], 10);
+    const m = parts[1];
+    const s = parts[2];
+
     const ampm = h >= 12 ? 'PM' : 'AM';
     const h12 = h % 12 === 0 ? 12 : h % 12;
-    if (clockEl) clockEl.childNodes[0].textContent = `${pad(h12)}:${pad(now.getMinutes())}:${pad(now.getSeconds())} `;
+
+    if (clockEl) clockEl.childNodes[0].textContent = `${pad(h12)}:${m}:${s} `;
     if (ampmEl) ampmEl.textContent = ampm;
-    if (dateEl) dateEl.textContent = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    if (dateEl) dateEl.textContent = now.toLocaleDateString('en-US', { timeZone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     if (shiftEl) shiftEl.textContent = shiftForHour(h);
   }
   tick();
