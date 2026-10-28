@@ -16,39 +16,39 @@
 
 <style>
   :root{
-    --bg-deep:#0A0F1C;
-    --bg-mesh-1:#131B2E;
-    --bg-mesh-2:#0D1526;
-    --glass-surface:rgba(255,255,255,0.045);
-    --glass-surface-strong:rgba(255,255,255,0.075);
-    --glass-border:rgba(255,255,255,0.10);
-    --glass-border-strong:rgba(255,255,255,0.16);
-    --text-primary:#EDF1F7;
-    --text-secondary:#AEB8CC;
-    --text-muted:#6E7891;
-    --accent-amber:#F2A65A;
-    --accent-teal:#3FD8C2;
-    --accent-teal-glow:rgba(63,216,194,0.35);
+    /* 100% ULTRA-TRANSPARENT GLASS THEME */
+    --bg-deep: #060911;
+    --glass-surface: rgba(255, 255, 255, 0.02);
+    --glass-surface-strong: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-border-strong: rgba(255, 255, 255, 0.25);
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #CBD5E1;
+    --text-muted: #818CF8;
+    --accent-amber: #F2A65A;
+    --accent-teal: #3FD8C2;
+    --accent-teal-glow: rgba(63, 216, 194, 0.4);
 
-    --mod-outbound:#FF9E00;
-    --mod-inventory:#00F5D4;
-    --mod-inbound:#5465FF;
-    --mod-afs:#FF0054;
-    --mod-fresh:#70E000;
-    --mod-rtv:#B5179E;
-    --mod-supermall:#9D4EDD;
+    --mod-outbound: #FF9E00;
+    --mod-inventory: #00F5D4;
+    --mod-inbound: #5465FF;
+    --mod-afs: #FF0054;
+    --mod-fresh: #70E000;
+    --mod-rtv: #B5179E;
+    --mod-supermall: #9D4EDD;
 
-    --radius-lg:20px;
-    --radius-md:14px;
-    --radius-sm:10px;
-    --font-display:'Sora', sans-serif;
-    --font-body:'Inter', sans-serif;
-    --font-mono:'JetBrains Mono', monospace;
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
   }
 
   @keyframes auroraDrift{
     0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(-2.5%,2%) scale(1.07);}
+    50%{transform:translate(-3%, 3%) scale(1.1);}
   }
   @keyframes dialRotate{
     from{transform:rotate(0deg);}
@@ -56,11 +56,11 @@
   }
   @keyframes clockGlow{
     0%,100%{text-shadow:0 0 0 rgba(63,216,194,0);}
-    50%{text-shadow:0 0 18px rgba(63,216,194,0.25);}
+    50%{text-shadow:0 0 20px rgba(63,216,194,0.4);}
   }
   @keyframes logoRing{
-    0%,100%{box-shadow:0 0 0 0 rgba(63,216,194,0.28);}
-    50%{box-shadow:0 0 0 7px rgba(63,216,194,0);}
+    0%,100%{box-shadow:0 0 0 0 rgba(63,216,194,0.3);}
+    50%{box-shadow:0 0 0 8px rgba(63,216,194,0);}
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(8px); }
@@ -73,45 +73,49 @@
   body{
     font-family:var(--font-body);
     color:var(--text-primary);
-    background:linear-gradient(180deg, var(--bg-mesh-1) 0%, var(--bg-deep) 55%, var(--bg-mesh-2) 100%);
+    background-color: var(--bg-deep);
     min-height:100vh;
     overflow-x:hidden;
   }
 
+  /* FULL-SCREEN GLASS BACKGROUND GRADIENT GLOWS */
   body::before{
     content:'';
     position:fixed;
     inset:0;
     background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size:64px 64px;
     pointer-events:none;
     z-index:0;
-    mask-image:radial-gradient(ellipse at 30% 0%, black 0%, transparent 70%);
+    mask-image:radial-gradient(ellipse at 50% 10%, black 0%, transparent 80%);
   }
 
   body::after{
     content:'';
     position:fixed;
-    inset:-10%;
+    inset:-20%;
     background:
-      radial-gradient(circle at 12% 8%, rgba(63,216,194,0.12), transparent 40%),
-      radial-gradient(circle at 88% 82%, rgba(242,166,90,0.10), transparent 45%);
+      radial-gradient(circle at 20% 20%, rgba(63,216,194,0.18), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(157,78,221,0.15), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(242,166,90,0.10), transparent 60%);
     pointer-events:none;
     z-index:0;
-    animation:auroraDrift 22s ease-in-out infinite;
+    animation:auroraDrift 20s ease-in-out infinite alternate;
     will-change:transform;
   }
 
   a{color:inherit; text-decoration:none; -webkit-tap-highlight-color: transparent;}
   button{font-family:inherit; cursor:pointer;}
 
+  /* PURE TRANSPARENT GLASS CONTAINER CLASS */
   .glass{
-    background:var(--glass-surface);
-    backdrop-filter:blur(24px) saturate(150%);
-    -webkit-backdrop-filter:blur(24px) saturate(150%);
-    border:1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(18px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   }
 
   .app-container{
@@ -125,16 +129,16 @@
   .sidebar-overlay{
     display:none;
     position:fixed; inset:0;
-    background:rgba(6,9,16,0.6);
-    backdrop-filter:blur(3px);
+    background:rgba(0,0,0,0.7);
+    backdrop-filter:blur(8px);
     z-index:40;
   }
   .sidebar-overlay.show{display:block;}
 
   .sidebar{
-    background:var(--glass-surface);
-    backdrop-filter:blur(28px) saturate(150%);
-    -webkit-backdrop-filter:blur(28px) saturate(150%);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
     border-right:1px solid var(--glass-border);
     display:flex;
     flex-direction:column;
@@ -179,7 +183,7 @@
   .logo-text .word .o{color:var(--accent-teal);}
   .logo-text .tag{
     font-size:11px;
-    color:var(--text-muted);
+    color:var(--text-secondary);
     margin-top:3px;
     font-weight:500;
   }
@@ -188,10 +192,11 @@
 
   .nav-divider{
     font-size:11.5px;
-    color:var(--text-muted);
+    color:var(--text-secondary);
     font-weight:600;
     padding:18px 12px 8px;
     letter-spacing:0.02em;
+    opacity: 0.8;
   }
   .nav-divider:first-child{padding-top:4px;}
 
@@ -204,17 +209,24 @@
     color:var(--text-secondary);
     font-size:14px;
     font-weight:500;
-    transition:background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    transition:all 0.2s ease;
     margin-bottom:2px;
+    border: 1px solid transparent;
   }
-  .nav-item i{width:18px; text-align:center; font-size:15px; color:var(--text-muted); transition:color 0.15s ease;}
-  .nav-item svg{width:18px; height:18px; color:var(--text-muted); transition:color 0.15s ease, transform 0.2s ease; flex-shrink:0;}
-  .nav-item:hover{background:var(--glass-surface-strong); color:var(--text-primary); transform:translateX(2px);}
+  .nav-item i{width:18px; text-align:center; font-size:15px; color:var(--text-secondary); transition:color 0.2s ease;}
+  .nav-item svg{width:18px; height:18px; color:var(--text-secondary); transition:color 0.2s ease, transform 0.2s ease; flex-shrink:0;}
+  .nav-item:hover{
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border-color: var(--glass-border);
+    transform: translateX(3px);
+  }
   .nav-item:hover i, .nav-item:hover svg{color:var(--accent-teal);}
   .nav-item.active{
-    background:linear-gradient(135deg, rgba(63,216,194,0.14), rgba(63,216,194,0.04));
+    background: linear-gradient(135deg, rgba(63,216,194,0.15), rgba(255,255,255,0.03));
     color:var(--text-primary);
-    border:1px solid rgba(63,216,194,0.25);
+    border:1px solid rgba(63,216,194,0.4);
+    box-shadow: 0 0 15px rgba(63,216,194,0.15);
   }
   .nav-item.active i, .nav-item.active svg{color:var(--accent-teal);}
 
@@ -255,7 +267,7 @@
   }
   .menu-btn{
     display:none;
-    background:var(--glass-surface);
+    background:rgba(255,255,255,0.05);
     border:1px solid var(--glass-border);
     color:var(--text-primary);
     width:40px; height:40px;
@@ -287,7 +299,7 @@
     overflow:hidden;
   }
   .ops-clock-block{position:relative; z-index:1;}
-  .ops-clock-label{font-size:12px; color:var(--text-muted); font-weight:600; margin-bottom:6px;}
+  .ops-clock-label{font-size:12px; color:var(--text-secondary); font-weight:600; margin-bottom:6px;}
   .ops-clock{
     font-family:var(--font-mono);
     font-size:38px;
@@ -304,35 +316,37 @@
 
   .ops-shift-block{position:relative; z-index:1; display:flex; gap:24px; flex-wrap:wrap;}
   .ops-stat{min-width:100px;}
-  .ops-stat .label{font-size:11px; color:var(--text-muted); font-weight:600; margin-bottom:4px;}
+  .ops-stat .label{font-size:11px; color:var(--text-secondary); font-weight:600; margin-bottom:4px;}
   .ops-stat .value{font-family:var(--font-display); font-size:17px; font-weight:700;}
   .ops-stat .value.teal{color:var(--accent-teal);}
 
-  /* COUNTRY TABS STYLING */
+  /* COUNTRY TABS TRANSPARENT STYLING */
   .country-tabs-wrapper { margin-bottom: 24px; }
   .country-tabs-nav { display: flex; gap: 10px; }
   .country-tab-btn {
-    background: var(--glass-surface);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     color: var(--text-secondary);
-    padding: 10px 22px;
+    padding: 10px 24px;
     border-radius: var(--radius-sm);
     font-family: var(--font-display);
     font-size: 13.5px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
   }
   .country-tab-btn:hover {
-    background: var(--glass-surface-strong);
+    background: rgba(255, 255, 255, 0.08);
     color: var(--text-primary);
     border-color: var(--glass-border-strong);
   }
   .country-tab-btn.active {
-    background: linear-gradient(135deg, rgba(63,216,194,0.2), rgba(63,216,194,0.05));
+    background: linear-gradient(135deg, rgba(63,216,194,0.25), rgba(255,255,255,0.05));
     color: var(--accent-teal);
     border-color: var(--accent-teal);
-    box-shadow: 0 0 12px var(--accent-teal-glow);
+    box-shadow: 0 0 16px var(--accent-teal-glow);
   }
 
   .section-heading{
@@ -348,7 +362,7 @@
   .section-heading .rule{
     flex:1;
     height:1px;
-    background:linear-gradient(90deg, var(--glass-border), transparent);
+    background:linear-gradient(90deg, var(--glass-border-strong), transparent);
   }
 
   .cards-grid{
@@ -357,19 +371,18 @@
     gap:16px;
   }
 
+  /* TRANSPARENT GLASS AUDIT CARDS */
   .audit-card{
     border-radius:var(--radius-lg);
     padding:18px;
     position:relative;
     cursor:pointer;
-    background: var(--glass-surface);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     --card-accent:var(--accent-teal);
-    border: 1.5px solid color-mix(in srgb, var(--card-accent) 70%, white);
-    box-shadow: 
-      0 0 10px color-mix(in srgb, var(--card-accent) 30%, transparent),
-      inset 0 0 12px color-mix(in srgb, var(--card-accent) 12%, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   }
   .audit-card.fresh{--card-accent:var(--mod-fresh);}
@@ -383,11 +396,10 @@
   .audit-card:hover{
     transform: translateY(-5px) scale(1.02);
     border-color: var(--card-accent);
-    background: var(--glass-surface-strong);
+    background: rgba(255, 255, 255, 0.06);
     box-shadow: 
-      0 0 15px var(--card-accent),
-      0 0 30px color-mix(in srgb, var(--card-accent) 50%, transparent),
-      inset 0 0 15px color-mix(in srgb, var(--card-accent) 25%, transparent);
+      0 0 20px color-mix(in srgb, var(--card-accent) 40%, transparent),
+      0 12px 32px rgba(0, 0, 0, 0.4);
   }
 
   .card-badge{
@@ -396,9 +408,9 @@
     font-size:10px;
     font-weight:700;
     color:#FFFFFF;
-    background:color-mix(in srgb, var(--card-accent) 30%, transparent);
+    background:color-mix(in srgb, var(--card-accent) 25%, transparent);
     border:1px solid var(--card-accent);
-    box-shadow: 0 0 8px color-mix(in srgb, var(--card-accent) 50%, transparent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--card-accent) 40%, transparent);
     padding:3px 9px;
     border-radius:20px;
   }
@@ -411,13 +423,13 @@
     color:var(--card-accent);
     background:color-mix(in srgb, var(--card-accent) 15%, transparent);
     border:1px solid var(--card-accent);
-    box-shadow: 0 0 8px color-mix(in srgb, var(--card-accent) 40%, transparent);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--card-accent) 30%, transparent);
     margin-bottom:14px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   .audit-card:hover .card-icon {
     transform: scale(1.1) rotate(-3deg);
-    box-shadow: 0 0 14px var(--card-accent);
+    box-shadow: 0 0 16px var(--card-accent);
   }
   .card-icon svg{width:20px; height:20px;}
 
@@ -435,17 +447,18 @@
     align-items:center;
     justify-content:space-between;
     width:100%;
-    background:rgba(255,255,255,0.04);
+    background:rgba(255,255,255,0.03);
     border:1px solid var(--glass-border);
     color:var(--text-primary);
     padding:9px 14px;
     border-radius:var(--radius-sm);
     font-size:12.5px;
     font-weight:600;
+    transition: all 0.2s ease;
   }
   .audit-card:hover .open-btn{
     background:color-mix(in srgb, var(--card-accent) 20%, transparent);
-    border-color:color-mix(in srgb, var(--card-accent) 50%, transparent);
+    border-color:color-mix(in srgb, var(--card-accent) 60%, transparent);
   }
 
   .metrics-grid {
@@ -458,7 +471,9 @@
   .metric-box {
     padding: 18px 20px;
     border-radius: var(--radius-md);
-    background: var(--glass-surface);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
@@ -467,7 +482,7 @@
   .metric-box .metric-tag {
     font-size: 11px;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -490,6 +505,10 @@
     border-radius: var(--radius-lg);
     padding: 24px;
     margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
   }
 
   .detail-header {
@@ -517,7 +536,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(63,216,194,0.12);
+    background: rgba(63,216,194,0.1);
     border: 1px solid rgba(63,216,194,0.3);
     color: var(--accent-teal);
     padding: 8px 14px;
@@ -531,7 +550,7 @@
   }
 
   .external-launch-link.editor-btn {
-    background: rgba(242,166,90,0.12);
+    background: rgba(242,166,90,0.1);
     border: 1px solid rgba(242,166,90,0.3);
     color: var(--accent-amber);
   }
@@ -549,7 +568,7 @@
   .stats-table th {
     text-align: left;
     padding: 10px 12px;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-weight: 600;
     font-size: 12px;
     border-bottom: 1px solid var(--glass-border);
@@ -563,7 +582,7 @@
 
   .stats-table tr:hover td {
     color: var(--text-primary);
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
   }
 
   @media (max-width: 900px){
@@ -1074,15 +1093,6 @@
 </div>
 
 <script>
-  /* ========================================================================
-     MASTER CONFIGURATION - COUNTRY & FUNCTION WISE DATA
-     ======================================================================== 
-     To add or update links for any country:
-     1. Locate the country (UAE, KSA, EGY).
-     2. Update 'launchUrl' (Dashboard card click).
-     3. Update 'scriptEditorUrl' (Script Editor button).
-     4. Update 'reportUrl' (View Reports button).
-  */
   const COUNTRY_DATA = {
     UAE: {
       timeZone: 'Asia/Dubai',
@@ -1093,7 +1103,6 @@
           desc: 'Monitor temperature standards, cold chain compliance, and fresh goods placement.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE FRESH PUT */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec'
@@ -1104,7 +1113,6 @@
           desc: 'Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE INBOUND */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec'
@@ -1115,7 +1123,6 @@
           desc: 'Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE OUTBOUND */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
           scriptEditorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec'
@@ -1126,7 +1133,6 @@
           desc: 'Advanced fulfillment and safety checks, hazard reporting, and operational compliance.',
           class: 'afs',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE AFS */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec'
@@ -1137,7 +1143,6 @@
           desc: 'Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE INVENTORY */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec'
@@ -1148,7 +1153,6 @@
           desc: 'Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.',
           class: 'rtv',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>`,
-          /* PASTE LINKS BELOW FOR UAE RTV */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit',
           reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec'
@@ -1159,7 +1163,6 @@
           desc: 'Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.',
           class: 'supermall',
           iconHtml: `<i class="fa-solid fa-store"></i>`,
-          /* PASTE LINKS BELOW FOR UAE SUPERMALL */
           launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
           scriptEditorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit',
           reportUrl: 'YOUR_UAE_SUPERMALL_REPORT_URL'
@@ -1175,7 +1178,6 @@
           desc: 'Monitor cold chain compliance and fresh goods placement across KSA facilities.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          /* PASTE LINKS BELOW FOR KSA FRESH PUT */
           launchUrl: 'YOUR_KSA_FRESH_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_KSA_FRESH_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_KSA_FRESH_REPORT_URL'
@@ -1186,7 +1188,6 @@
           desc: 'Inspect incoming shipments, supplier PO compliance, and dock processes in Riyadh & Jeddah FCs.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          /* PASTE LINKS BELOW FOR KSA INBOUND */
           launchUrl: 'YOUR_KSA_INBOUND_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_KSA_INBOUND_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_KSA_INBOUND_REPORT_URL'
@@ -1197,7 +1198,6 @@
           desc: 'Inspect outbound shipments, pallet compliance, and loading accuracy across KSA hubs.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          /* PASTE LINKS BELOW FOR KSA OUTBOUND */
           launchUrl: 'YOUR_KSA_OUTBOUND_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_KSA_OUTBOUND_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_KSA_OUTBOUND_REPORT_URL'
@@ -1208,7 +1208,6 @@
           desc: 'Verify bin accuracy, cycle counts, and location integrity for KSA operations.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          /* PASTE LINKS BELOW FOR KSA INVENTORY */
           launchUrl: 'YOUR_KSA_INVENTORY_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_KSA_INVENTORY_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_KSA_INVENTORY_REPORT_URL'
@@ -1224,7 +1223,6 @@
           desc: 'Egypt fulfillment center cold chain and fresh inventory audits.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          /* PASTE LINKS BELOW FOR EGY FRESH PUT */
           launchUrl: 'YOUR_EGY_FRESH_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_EGY_FRESH_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_EGY_FRESH_REPORT_URL'
@@ -1235,7 +1233,6 @@
           desc: 'Cairo FC receiving accuracy, vendor compliance, and dock receiving quality checks.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          /* PASTE LINKS BELOW FOR EGY INBOUND */
           launchUrl: 'YOUR_EGY_INBOUND_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_EGY_INBOUND_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_EGY_INBOUND_REPORT_URL'
@@ -1246,7 +1243,6 @@
           desc: 'Outbound packaging and courier handoff verification in Egypt facilities.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          /* PASTE LINKS BELOW FOR EGY OUTBOUND */
           launchUrl: 'YOUR_EGY_OUTBOUND_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_EGY_OUTBOUND_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_EGY_OUTBOUND_REPORT_URL'
@@ -1257,7 +1253,6 @@
           desc: 'Local warehouse cycle counts and location audits for Egypt FCs.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          /* PASTE LINKS BELOW FOR EGY INVENTORY */
           launchUrl: 'YOUR_EGY_INVENTORY_LAUNCH_URL',
           scriptEditorUrl: 'YOUR_EGY_INVENTORY_SCRIPT_EDITOR_URL',
           reportUrl: 'YOUR_EGY_INVENTORY_REPORT_URL'
@@ -1271,12 +1266,10 @@
   function switchCountryTab(countryCode) {
     activeCountry = countryCode;
 
-    // 1. Update active tab button styles
     document.querySelectorAll('.country-tab-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.trim() === countryCode);
     });
 
-    // 2. Update Header Clock Label & Modules Counter
     const locationLabel = document.getElementById('clockLocationLabel');
     if (locationLabel) locationLabel.textContent = `Facility local time (${countryCode})`;
 
@@ -1284,7 +1277,6 @@
     const modulesCount = document.getElementById('modulesReadyCount');
     if (modulesCount) modulesCount.textContent = `${countryConfig.tools.length} / ${countryConfig.tools.length}`;
 
-    // 3. Update Left Sidebar Title and Dynamic Links based on Country
     const sidebarTitle = document.getElementById('sidebarNavTitle');
     if (sidebarTitle) sidebarTitle.textContent = `Audit Management (${countryCode})`;
 
@@ -1298,7 +1290,6 @@
       `).join('');
     }
 
-    // 4. Render Dashboard Tool Cards dynamically
     const grid = document.getElementById('toolsCardsGrid');
     if (grid) {
       grid.innerHTML = countryConfig.tools.map(tool => `
@@ -1315,10 +1306,7 @@
       `).join('');
     }
 
-    // 5. Update Action Button Links inside Module Detail Views
     updateModuleActionLinks(countryCode);
-
-    // 6. Force instant clock refresh
     tick();
   }
 
@@ -1335,7 +1323,6 @@
     });
   }
 
-  // Central URL to your deployed Apps Script Dashboard
   const DASHBOARD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec";
 
   const MODULE_KEYS = {
@@ -1480,11 +1467,10 @@
 
   window.addEventListener('hashchange', handleRoute);
   window.addEventListener('DOMContentLoaded', () => {
-    switchCountryTab('UAE'); // Default view
+    switchCountryTab('UAE');
     handleRoute();
   });
 
-  // Mobile Menu Controls
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebarOverlay');
   const menuToggle = document.getElementById('menuToggle');
@@ -1498,7 +1484,6 @@
     overlay.classList.remove('show');
   });
 
-  // Live Clock (Dynamic Timezone Aware)
   const clockEl = document.getElementById('liveClock');
   const ampmEl = document.getElementById('liveAmPm');
   const dateEl = document.getElementById('liveDate');
