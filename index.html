@@ -16,7 +16,6 @@
 
 <style>
   :root{
-    /* 100% ULTRA-TRANSPARENT GLASS THEME */
     --bg-deep: #060911;
     --glass-surface: rgba(255, 255, 255, 0.02);
     --glass-surface-strong: rgba(255, 255, 255, 0.06);
@@ -496,7 +495,7 @@
       </div>
     </div>
 
-    <!-- LEFT SIDEBAR NAVIGATION WITH 3 OPTIONS UNDER AUDIT MANAGEMENT -->
+    <!-- LEFT SIDEBAR NAVIGATION WITH 4 OPTIONS UNDER AUDIT MANAGEMENT -->
     <nav class="sidebar-nav">
       <div class="nav-divider" id="sidebarNavTitle">Audit Management (UAE)</div>
       
@@ -510,6 +509,10 @@
       </a>
       <a href="#" class="nav-item" onclick="switchMainView('editors')">
         <i class="fa-solid fa-code"></i>
+        <span>Web App Editors</span>
+      </a>
+      <a href="#" class="nav-item" onclick="switchMainView('responsesheets')">
+        <i class="fa-solid fa-file-lines"></i>
         <span>Response Sheets</span>
       </a>
     </nav>
@@ -534,7 +537,7 @@
       </div>
     </header>
 
-    <!-- DASHBOARD / MAIN VIEW CONTAINER -->
+    <!-- MAIN VIEW CONTAINER -->
     <div id="view-dashboard" class="view-container active-view">
       <section class="ops-hero glass">
         <div class="ops-clock-block">
@@ -580,78 +583,103 @@
   const COUNTRY_DATA = {
     UAE: {
       timeZone: 'Asia/Dubai',
+      dashboards: [
+        {
+          name: 'UAE QA Dashboard',
+          desc: 'Comprehensive quality assurance metrics, trends, and facility-wide compliance logs.',
+          class: 'fresh',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'UAE QC Connect',
+          desc: 'Quality control communications, incident logs, and real-time operational alerts.',
+          class: 'inbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+          url: '#'
+        },
+        {
+          name: 'UAE Training Dashboard',
+          desc: 'Staff audit training progress, certification tracking, and compliance readiness scores.',
+          class: 'outbound',
+          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+          url: '#'
+        }
+      ],
       tools: [
         {
           name: 'UAE Fresh Put Audit',
           desc: 'Monitor temperature standards, cold chain compliance, and fresh goods placement.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
-          editorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit'
+          editorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE Inbound Audit',
           desc: 'Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
-          editorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit'
+          editorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE Outbound Audit',
           desc: 'Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
-          editorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit'
+          editorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE AFS Audit',
           desc: 'Advanced fulfillment and safety checks, hazard reporting, and operational compliance.',
           class: 'afs',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
-          editorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit'
+          editorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE Inventory Audit',
           desc: 'Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
-          editorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit'
+          editorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE RTV Audit',
           desc: 'Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.',
           class: 'rtv',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
-          editorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit'
+          editorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit',
+          responseSheetUrl: '#'
         },
         {
           name: 'UAE Supermall Audit',
           desc: 'Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.',
           class: 'supermall',
           iconHtml: `<i class="fa-solid fa-store"></i>`,
-          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
           toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
-          editorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit'
+          editorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit',
+          responseSheetUrl: '#'
         }
       ]
     },
     KSA: {
       timeZone: 'Asia/Riyadh',
+      dashboards: [],
       tools: []
     },
     EGY: {
       timeZone: 'Africa/Cairo',
+      dashboards: [],
       tools: []
     }
   };
@@ -670,7 +698,8 @@
     if (headingText) {
       if (viewType === 'dashboards') headingText.innerHTML = `Dashboards <span class="rule"></span>`;
       else if (viewType === 'tools') headingText.innerHTML = `Audit Web Tools <span class="rule"></span>`;
-      else if (viewType === 'editors') headingText.innerHTML = `Response Sheets <span class="rule"></span>`;
+      else if (viewType === 'editors') headingText.innerHTML = `Web App Editors <span class="rule"></span>`;
+      else if (viewType === 'responsesheets') headingText.innerHTML = `Response Sheets <span class="rule"></span>`;
     }
 
     renderCards();
@@ -704,19 +733,35 @@
     const grid = document.getElementById('toolsCardsGrid');
     if (!grid) return;
 
-    grid.innerHTML = countryConfig.tools.map(tool => {
-      let targetUrl = tool.dashboardUrl;
-      let btnLabel = 'Open Dashboard';
-      let badgeText = 'Dashboard';
+    if (activeViewType === 'dashboards') {
+      grid.innerHTML = countryConfig.dashboards.map(d => `
+        <div class="audit-card glass ${d.class}" onclick="window.open('${d.url}', '_blank')">
+          <div class="card-badge">Dashboard</div>
+          <div class="card-icon">${d.iconHtml}</div>
+          <h3>${d.name}</h3>
+          <p>${d.desc}</p>
+          <div class="open-btn">
+            <span>Open Dashboard</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </div>
+      `).join('');
+      return;
+    }
 
-      if (activeViewType === 'tools') {
-        targetUrl = tool.toolUrl;
-        btnLabel = 'Launch Tool';
-        badgeText = 'Operational';
-      } else if (activeViewType === 'editors') {
+    grid.innerHTML = countryConfig.tools.map(tool => {
+      let targetUrl = tool.toolUrl;
+      let btnLabel = 'Launch Tool';
+      let badgeText = 'Operational';
+
+      if (activeViewType === 'editors') {
         targetUrl = tool.editorUrl;
         btnLabel = 'Editor';
         badgeText = 'Editor';
+      } else if (activeViewType === 'responsesheets') {
+        targetUrl = tool.responseSheetUrl;
+        btnLabel = 'Open Sheet';
+        badgeText = 'Sheet';
       }
 
       return `
