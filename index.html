@@ -78,7 +78,6 @@
     overflow-x:hidden;
   }
 
-  /* FULL-SCREEN GLASS BACKGROUND GRADIENT GLOWS */
   body::before{
     content:'';
     position:fixed;
@@ -109,7 +108,6 @@
   a{color:inherit; text-decoration:none; -webkit-tap-highlight-color: transparent;}
   button{font-family:inherit; cursor:pointer;}
 
-  /* PURE TRANSPARENT GLASS CONTAINER CLASS */
   .glass{
     background: rgba(255, 255, 255, 0.02) !important;
     backdrop-filter: blur(18px) saturate(180%) !important;
@@ -212,6 +210,7 @@
     transition:all 0.2s ease;
     margin-bottom:2px;
     border: 1px solid transparent;
+    cursor: pointer;
   }
   .nav-item i{width:18px; text-align:center; font-size:15px; color:var(--text-secondary); transition:color 0.2s ease;}
   .nav-item svg{width:18px; height:18px; color:var(--text-secondary); transition:color 0.2s ease, transform 0.2s ease; flex-shrink:0;}
@@ -320,7 +319,6 @@
   .ops-stat .value{font-family:var(--font-display); font-size:17px; font-weight:700;}
   .ops-stat .value.teal{color:var(--accent-teal);}
 
-  /* COUNTRY TABS TRANSPARENT STYLING */
   .country-tabs-wrapper { margin-bottom: 24px; }
   .country-tabs-nav { display: flex; gap: 10px; }
   .country-tab-btn {
@@ -371,7 +369,6 @@
     gap:16px;
   }
 
-  /* TRANSPARENT GLASS AUDIT CARDS */
   .audit-card{
     border-radius:var(--radius-lg);
     padding:18px;
@@ -461,130 +458,6 @@
     border-color:color-mix(in srgb, var(--card-accent) 60%, transparent);
   }
 
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  .metric-box {
-    padding: 18px 20px;
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid var(--glass-border);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .metric-box .metric-tag {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .metric-box .metric-val {
-    font-family: var(--font-display);
-    font-size: 26px;
-    font-weight: 700;
-    margin-top: 6px;
-    color: var(--text-primary);
-  }
-
-  .metric-box .metric-sub {
-    font-size: 12px;
-    margin-top: 4px;
-    color: var(--text-secondary);
-  }
-
-  .detail-card {
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-  }
-
-  .detail-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 18px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .detail-header h3 {
-    font-family: var(--font-display);
-    font-size: 17px;
-    font-weight: 600;
-  }
-
-  .action-buttons-group {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .external-launch-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(63,216,194,0.1);
-    border: 1px solid rgba(63,216,194,0.3);
-    color: var(--accent-teal);
-    padding: 8px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 12.5px;
-    font-weight: 600;
-    transition: background 0.15s ease;
-  }
-  .external-launch-link:hover {
-    background: rgba(63,216,194,0.22);
-  }
-
-  .external-launch-link.editor-btn {
-    background: rgba(242,166,90,0.1);
-    border: 1px solid rgba(242,166,90,0.3);
-    color: var(--accent-amber);
-  }
-  .external-launch-link.editor-btn:hover {
-    background: rgba(242,166,90,0.22);
-  }
-
-  .stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 13.5px;
-  }
-
-  .stats-table th {
-    text-align: left;
-    padding: 10px 12px;
-    color: var(--text-secondary);
-    font-weight: 600;
-    font-size: 12px;
-    border-bottom: 1px solid var(--glass-border);
-  }
-
-  .stats-table td {
-    padding: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    color: var(--text-secondary);
-  }
-
-  .stats-table tr:hover td {
-    color: var(--text-primary);
-    background: rgba(255,255,255,0.03);
-  }
-
   @media (max-width: 900px){
     .app-container{grid-template-columns:1fr;}
     .sidebar{
@@ -623,18 +496,22 @@
       </div>
     </div>
 
-    <!-- LEFT SIDEBAR NAVIGATION -->
+    <!-- LEFT SIDEBAR NAVIGATION WITH 3 OPTIONS UNDER AUDIT MANAGEMENT -->
     <nav class="sidebar-nav">
-      <a href="#" class="nav-item active" data-view="dashboard">
-        <i class="fa-solid fa-chart-line"></i>
-        <span>Dashboard</span>
-      </a>
       <div class="nav-divider" id="sidebarNavTitle">Audit Management (UAE)</div>
       
-      <!-- DYNAMIC AUDIT NAVIGATION LINKS CONTAINER -->
-      <div id="dynamicSidebarLinks">
-        <!-- Rendered automatically per country selection -->
-      </div>
+      <a href="#" class="nav-item active" onclick="switchMainView('dashboards')">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboards</span>
+      </a>
+      <a href="#" class="nav-item" onclick="switchMainView('tools')">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Audit Web Tools</span>
+      </a>
+      <a href="#" class="nav-item" onclick="switchMainView('editors')">
+        <i class="fa-solid fa-code"></i>
+        <span>Response Sheets</span>
+      </a>
     </nav>
 
     <div class="sidebar-footer">
@@ -653,11 +530,11 @@
       </button>
       <div class="header-titles">
         <h1 id="pageTitle">Warehouse Audit &amp; Quality Management</h1>
-        <p id="pageSubtitle">Select an operational module to view weekly and monthly details.</p>
+        <p id="pageSubtitle">Select an operational view or configure your dashboards, tools, and editors.</p>
       </div>
     </header>
 
-    <!-- 1. MAIN DASHBOARD VIEW -->
+    <!-- DASHBOARD / MAIN VIEW CONTAINER -->
     <div id="view-dashboard" class="view-container active-view">
       <section class="ops-hero glass">
         <div class="ops-clock-block">
@@ -686,409 +563,16 @@
         </div>
       </div>
 
-      <div class="section-heading">
-        Active Operational Tools
+      <div class="section-heading" id="sectionHeadingText">
+        Dashboards
         <span class="rule"></span>
       </div>
 
       <!-- DYNAMIC CARDS CONTAINER -->
       <div class="cards-grid" id="toolsCardsGrid">
-        <!-- Country tools will render dynamically here -->
+        <!-- Rendered dynamically -->
       </div>
     </div>
-
-    <!-- 2. FRESH PUTAWAY MODULE DETAILS -->
-    <div id="view-freshPutaway" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Temperature Checks</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Checks</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Fresh items verified</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="freshPutawayHeader">Fresh Putaway Cold Chain Performance</h3>
-          <div class="action-buttons-group">
-            <a id="freshPutawayScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="freshPutawayReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Putaway Audits</th>
-              <th>Pass Count</th>
-              <th>Temp Breaches</th>
-              <th>Cold Chain Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 3. INBOUND MODULE DETAILS -->
-    <div id="view-inbound" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Dock Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Total POs Checked</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Pass Rate</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Pass Rate</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="inboundHeader">Inbound Weekly PO &amp; Receiving Breakdown</h3>
-          <div class="action-buttons-group">
-            <a id="inboundScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="inboundReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Shipments Audited</th>
-              <th>Compliant POs</th>
-              <th>Non-Compliant POs</th>
-              <th>Receiving Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 4. OUTBOUND MODULE DETAILS -->
-    <div id="view-outbound" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub" style="color:var(--accent-teal);">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Aggregated All Weeks</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="outboundHeader">Outbound Weekly Performance Breakdown</h3>
-          <div class="action-buttons-group">
-            <a id="outboundScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="outboundReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Time Period</th>
-              <th>Audits Completed</th>
-              <th>Passed</th>
-              <th>Flagged Errors</th>
-              <th>Pass Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 5. AFS MODULE DETAILS -->
-    <div id="view-afs" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Safety Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Facility Inspections</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Safety Score</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Safety Score</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="afsHeader">AFS &amp; Safety Weekly Reports</h3>
-          <div class="action-buttons-group">
-            <a id="afsScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="afsReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Safety Checks</th>
-              <th>Compliant Areas</th>
-              <th>Open Hazards Flagged</th>
-              <th>Safety Index</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 6. INVENTORY MODULE DETAILS -->
-    <div id="view-inventory" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Aggregated All Weeks</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Accuracy</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Accuracy</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="inventoryHeader">Inventory Cycle Count &amp; Accuracy Details</h3>
-          <div class="action-buttons-group">
-            <a id="inventoryScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="inventoryReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Bins Checked</th>
-              <th>Passed</th>
-              <th>Discrepancies</th>
-              <th>Location Accuracy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 7. RTV MODULE DETAILS -->
-    <div id="view-rtv" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly RTV Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Processed Batches</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Accuracy</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Accuracy</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="rtvHeader">Return to Vendor Processing Logs</h3>
-          <div class="action-buttons-group">
-            <a id="rtvScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="rtvReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Batches Processed</th>
-              <th>Accurate Audits</th>
-              <th>Document Errors</th>
-              <th>Return Accuracy</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- 8. SUPERMALL MODULE DETAILS -->
-    <div id="view-supermall" class="view-container">
-      <div class="metrics-grid">
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Supermall Audits</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Latest Week</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Total</span>
-          <span class="metric-val">--</span>
-          <span class="metric-sub">Items Inspected</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Weekly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Pass Rate</span>
-        </div>
-        <div class="metric-box glass">
-          <span class="metric-tag">Monthly Compliance</span>
-          <span class="metric-val" style="color:var(--accent-teal);">--%</span>
-          <span class="metric-sub">Overall Pass Rate</span>
-        </div>
-      </div>
-
-      <div class="detail-card glass">
-        <div class="detail-header">
-          <h3 id="supermallHeader">Supermall Audit Details</h3>
-          <div class="action-buttons-group">
-            <a id="supermallScriptBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link editor-btn">
-              <i class="fa-solid fa-code"></i>
-              <span>Script Editor</span>
-            </a>
-            <a id="supermallReportBtn" href="#" target="_blank" rel="noopener noreferrer" class="external-launch-link">
-              <i class="fa-solid fa-chart-pie"></i>
-              <span>View Reports</span>
-            </a>
-          </div>
-        </div>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Items Audited</th>
-              <th>Compliant Count</th>
-              <th>Defects Found</th>
-              <th>Pass Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td colspan="5" style="text-align:center;">Loading live data...</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
   </main>
 </div>
 
@@ -1098,170 +582,101 @@
       timeZone: 'Asia/Dubai',
       tools: [
         {
-          sidebarId: 'freshPutaway',
           name: 'UAE Fresh Put Audit',
           desc: 'Monitor temperature standards, cold chain compliance, and fresh goods placement.',
           class: 'fresh',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzUAueV3bukblVyEYCCv6IUVZZbzMoXhyqlXbmSnpl7aQJPUbwVH2P7deMJAxsmt5LBGA/exec',
+          editorUrl: 'https://script.google.com/home/projects/1g5txLogp10XloT6JVR8OmlqR3vdmtc7tZEgl-zKm87IM2qRyS8ounQtS/edit'
         },
         {
-          sidebarId: 'inbound',
           name: 'UAE Inbound Audit',
           desc: 'Inspect incoming shipments, supplier PO compliance, receiving accuracy, and dock processes.',
           class: 'inbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec',
+          editorUrl: 'https://script.google.com/home/projects/147q2zoomDWbbUNi03MNoEl59fCTsM1gql00bxCIyt7GhYuVT8gnFLen1/edit'
         },
         {
-          sidebarId: 'outbound',
           name: 'UAE Outbound Audit',
           desc: 'Inspect outgoing shipments, pallet conditions, manifest compliance, and loading accuracy.',
           class: 'outbound',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
-          scriptEditorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbybGMLrVEh4EDhH-Tu_EY167YJdH4Lf_L03f4bcy5369fBKOmdCawrGE2fwmSUTUnfq/exec',
+          editorUrl: 'https://script.google.com/u/0/home/projects/1Ulmnj83yjQO-Uglp93ugYmW2npMDquV_EJlPT1roRih4oeQut4mvjve5/edit'
         },
         {
-          sidebarId: 'afs',
           name: 'UAE AFS Audit',
           desc: 'Advanced fulfillment and safety checks, hazard reporting, and operational compliance.',
           class: 'afs',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.8-3 8-7 9-4-1-7-4.2-7-9V6l7-3Z"/><path d="M9 12l2.2 2.2L15.5 9.5"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbzlSshiWjTcu6kZB8_msvMMQ6cV7basQx5ws5UxRSRmt4vTwZm4Fk9HNm0d-lW7A37O/exec',
+          editorUrl: 'https://script.google.com/home/projects/1IqCKY0qTp8fkMOx72vfDlBFKgiM4t1pNVOWzKc1x1i4YnjtH6rHoeczD/edit'
         },
         {
-          sidebarId: 'inventory',
           name: 'UAE Inventory Audit',
           desc: 'Verify bin accuracy, cycle counts, stock discrepancies, and location integrity.',
           class: 'inventory',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbylIvK7yshYobzSVNg8TUxM-bgctxvahdpOnncdn3lxofiDJYqu38MLj6qSzEV3H_7p/exec',
+          editorUrl: 'https://script.google.com/home/projects/1oSBdPzuKzVTXSrbyTqpUfjcvXk_E8vYiA77z8viruiscg1jZVyRHV4Ek/edit'
         },
         {
-          sidebarId: 'rtv',
           name: 'UAE RTV Audit',
           desc: 'Verify return-to-vendor processing, vendor compliance, damaged stock, and paperwork.',
           class: 'rtv',
           iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 1 1 2.1 5"/><path d="M4 15.5V19h3.5"/><rect x="13" y="9" width="6" height="6" rx="1"/></svg>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit',
-          reportUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbxdABMozqhkCmjls187IbXiutwdAaaL73kKF0kmlkxUzuBDJB30c9mlwBJu4CCeDmvz/exec',
+          editorUrl: 'https://script.google.com/home/projects/16fGNMs13ZjHBNnDHyUb7bkVrO69nGmHsoRfDAKJbtOXagqQdxIYf1VHB/edit'
         },
         {
-          sidebarId: 'supermall',
           name: 'UAE Supermall Audit',
           desc: 'Audit retail partner inventory, packaging standards, and marketplace fulfillment quality.',
           class: 'supermall',
           iconHtml: `<i class="fa-solid fa-store"></i>`,
-          launchUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
-          scriptEditorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit',
-          reportUrl: 'YOUR_UAE_SUPERMALL_REPORT_URL'
+          dashboardUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
+          toolUrl: 'https://script.google.com/a/macros/noon.com/s/AKfycbx74Uk6YAsxNIDzR0zPkFxxzsC2O7XuelYYaD5F2CRV_pVIcdN0JXz1cHeKPkALCvqE/exec',
+          editorUrl: 'https://script.google.com/home/projects/1KBB2diR612oJONQCaSfGvnYUIuOqChBJGULtKhbBcuZuLagE2VY6xl4N/edit'
         }
       ]
     },
     KSA: {
       timeZone: 'Asia/Riyadh',
-      tools: [
-        {
-          sidebarId: 'freshPutaway',
-          name: 'KSA Fresh Put Audit',
-          desc: 'Monitor cold chain compliance and fresh goods placement across KSA facilities.',
-          class: 'fresh',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          launchUrl: 'YOUR_KSA_FRESH_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_KSA_FRESH_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_KSA_FRESH_REPORT_URL'
-        },
-        {
-          sidebarId: 'inbound',
-          name: 'KSA Inbound Audit',
-          desc: 'Inspect incoming shipments, supplier PO compliance, and dock processes in Riyadh & Jeddah FCs.',
-          class: 'inbound',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          launchUrl: 'YOUR_KSA_INBOUND_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_KSA_INBOUND_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_KSA_INBOUND_REPORT_URL'
-        },
-        {
-          sidebarId: 'outbound',
-          name: 'KSA Outbound Audit',
-          desc: 'Inspect outbound shipments, pallet compliance, and loading accuracy across KSA hubs.',
-          class: 'outbound',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          launchUrl: 'YOUR_KSA_OUTBOUND_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_KSA_OUTBOUND_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_KSA_OUTBOUND_REPORT_URL'
-        },
-        {
-          sidebarId: 'inventory',
-          name: 'KSA Inventory Audit',
-          desc: 'Verify bin accuracy, cycle counts, and location integrity for KSA operations.',
-          class: 'inventory',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          launchUrl: 'YOUR_KSA_INVENTORY_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_KSA_INVENTORY_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_KSA_INVENTORY_REPORT_URL'
-        }
-      ]
+      tools: []
     },
     EGY: {
       timeZone: 'Africa/Cairo',
-      tools: [
-        {
-          sidebarId: 'freshPutaway',
-          name: 'EGY Fresh Put Audit',
-          desc: 'Egypt fulfillment center cold chain and fresh inventory audits.',
-          class: 'fresh',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 3l-2.4 2M12 3l2.4 2M12 21l-2.4-2M12 21l2.4-2"/><path d="M4 8l16 8M4 8l2.6.4M4 8l1-2.4M20 16l-2.6-.4M20 16l-1 2.4"/><path d="M20 8L4 16M20 8l-2.6-.4M20 8l-1-2.4M4 16l2.6.4M4 16l1 2.4"/></svg>`,
-          launchUrl: 'YOUR_EGY_FRESH_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_EGY_FRESH_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_EGY_FRESH_REPORT_URL'
-        },
-        {
-          sidebarId: 'inbound',
-          name: 'EGY Inbound Audit',
-          desc: 'Cairo FC receiving accuracy, vendor compliance, and dock receiving quality checks.',
-          class: 'inbound',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13 L20.5 13 L20.5 20 L3.5 20 Z"/><path d="M12 3v8M8.5 8l3.5 3.5L15.5 8"/></svg>`,
-          launchUrl: 'YOUR_EGY_INBOUND_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_EGY_INBOUND_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_EGY_INBOUND_REPORT_URL'
-        },
-        {
-          sidebarId: 'outbound',
-          name: 'EGY Outbound Audit',
-          desc: 'Outbound packaging and courier handoff verification in Egypt facilities.',
-          class: 'outbound',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 L11 8.5 L11 18 L3 18 Z"/><path d="M3 8.5 L7 5 L11 8.5"/><path d="M14 15h3M16 12h4M17 9h2"/></svg>`,
-          launchUrl: 'YOUR_EGY_OUTBOUND_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_EGY_OUTBOUND_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_EGY_OUTBOUND_REPORT_URL'
-        },
-        {
-          sidebarId: 'inventory',
-          name: 'EGY Inventory Audit',
-          desc: 'Local warehouse cycle counts and location audits for Egypt FCs.',
-          class: 'inventory',
-          iconHtml: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="1.4"/><path d="M3.5 9.5h17M9 4v16"/><path d="M12 13.5l1.8 1.8L17 12"/></svg>`,
-          launchUrl: 'YOUR_EGY_INVENTORY_LAUNCH_URL',
-          scriptEditorUrl: 'YOUR_EGY_INVENTORY_SCRIPT_EDITOR_URL',
-          reportUrl: 'YOUR_EGY_INVENTORY_REPORT_URL'
-        }
-      ]
+      tools: []
     }
   };
 
   let activeCountry = 'UAE';
+  let activeViewType = 'dashboards';
+
+  function switchMainView(viewType) {
+    activeViewType = viewType;
+
+    document.querySelectorAll('.sidebar-nav .nav-item').forEach(item => {
+      item.classList.toggle('active', item.getAttribute('onclick')?.includes(viewType));
+    });
+
+    const headingText = document.getElementById('sectionHeadingText');
+    if (headingText) {
+      if (viewType === 'dashboards') headingText.innerHTML = `Dashboards <span class="rule"></span>`;
+      else if (viewType === 'tools') headingText.innerHTML = `Audit Web Tools <span class="rule"></span>`;
+      else if (viewType === 'editors') headingText.innerHTML = `Response Sheets <span class="rule"></span>`;
+    }
+
+    renderCards();
+    document.getElementById('sidebar')?.classList.remove('open');
+    document.getElementById('sidebarOverlay')?.classList.remove('show');
+  }
 
   function switchCountryTab(countryCode) {
     activeCountry = countryCode;
@@ -1280,195 +695,48 @@
     const sidebarTitle = document.getElementById('sidebarNavTitle');
     if (sidebarTitle) sidebarTitle.textContent = `Audit Management (${countryCode})`;
 
-    const sidebarContainer = document.getElementById('dynamicSidebarLinks');
-    if (sidebarContainer) {
-      sidebarContainer.innerHTML = countryConfig.tools.map(tool => `
-        <a href="#${tool.sidebarId}" class="nav-item" data-view="${tool.sidebarId}">
-          ${tool.iconHtml}
-          <span>${tool.name}</span>
-        </a>
-      `).join('');
-    }
+    renderCards();
+    tick();
+  }
 
+  function renderCards() {
+    const countryConfig = COUNTRY_DATA[activeCountry];
     const grid = document.getElementById('toolsCardsGrid');
-    if (grid) {
-      grid.innerHTML = countryConfig.tools.map(tool => `
-        <div class="audit-card glass ${tool.class}" onclick="window.open('${tool.launchUrl}', '_blank')">
-          <div class="card-badge">Operational</div>
+    if (!grid) return;
+
+    grid.innerHTML = countryConfig.tools.map(tool => {
+      let targetUrl = tool.dashboardUrl;
+      let btnLabel = 'Open Dashboard';
+      let badgeText = 'Dashboard';
+
+      if (activeViewType === 'tools') {
+        targetUrl = tool.toolUrl;
+        btnLabel = 'Launch Tool';
+        badgeText = 'Operational';
+      } else if (activeViewType === 'editors') {
+        targetUrl = tool.editorUrl;
+        btnLabel = 'Editor';
+        badgeText = 'Editor';
+      }
+
+      return `
+        <div class="audit-card glass ${tool.class}" onclick="window.open('${targetUrl}', '_blank')">
+          <div class="card-badge">${badgeText}</div>
           <div class="card-icon">${tool.iconHtml}</div>
           <h3>${tool.name}</h3>
           <p>${tool.desc}</p>
           <div class="open-btn">
-            <span>Launch Tool</span>
+            <span>${btnLabel}</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </div>
         </div>
-      `).join('');
-    }
-
-    updateModuleActionLinks(countryCode);
-    tick();
+      `;
+    }).join('');
   }
 
-  function updateModuleActionLinks(countryCode) {
-    const countryConfig = COUNTRY_DATA[countryCode];
-    countryConfig.tools.forEach(tool => {
-      const scriptBtn = document.getElementById(`${tool.sidebarId}ScriptBtn`);
-      const reportBtn = document.getElementById(`${tool.sidebarId}ReportBtn`);
-      const headerTitle = document.getElementById(`${tool.sidebarId}Header`);
-
-      if (scriptBtn) scriptBtn.href = tool.scriptEditorUrl || '#';
-      if (reportBtn) reportBtn.href = tool.reportUrl || '#';
-      if (headerTitle) headerTitle.textContent = `${tool.name} Performance Details`;
-    });
-  }
-
-  const DASHBOARD_ENDPOINT = "https://script.google.com/macros/s/AKfycbxxGwiup_tedECpYTTPSmDi0jPnf7EqNdj_G6qKAX_3OQiPBj1olET39nf1dVMtbpi8/exec";
-
-  const MODULE_KEYS = {
-    'freshPutaway': 'freshPutaway',
-    'inbound': 'inbound',
-    'outbound': 'outbound',
-    'afs': 'afs',
-    'inventory': 'inventory',
-    'rtv': 'rtv',
-    'supermall': 'supermall'
-  };
-
-  const routeMeta = {
-    'dashboard': { title: 'Warehouse Audit & Quality Management', subtitle: 'Select an operational tool from dashboard or access script & report settings.' },
-    'freshPutaway': { title: 'Fresh Put Audit Details', subtitle: 'Temperature logs, cold chain compliance, script editor, and reports.' },
-    'inbound': { title: 'Inbound Audit Details', subtitle: 'Receiving dock accuracy, supplier PO compliance, script editor, and reports.' },
-    'outbound': { title: 'Outbound Audit Details', subtitle: 'Shipment inspection metrics, script editor, and reports.' },
-    'afs': { title: 'AFS Audit Details', subtitle: 'Facility safety audits, compliance reports, script editor, and reports.' },
-    'inventory': { title: 'Inventory Audit Details', subtitle: 'Bin accuracy breakdown, cycle counts, script editor, and reports.' },
-    'rtv': { title: 'RTV Audit Details', subtitle: 'Return to vendor paperwork validation, script editor, and reports.' },
-    'supermall': { title: 'Supermall Audit Details', subtitle: 'Supermall fulfillment quality, script editor, and reports.' }
-  };
-
-  let cachedDashboardData = null;
-
-  function loadLiveDashboardMetrics() {
-    if (cachedDashboardData) return Promise.resolve(cachedDashboardData);
-
-    return new Promise((resolve, reject) => {
-      const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-      window[callbackName] = function(data) {
-        delete window[callbackName];
-        if (script.parentNode) script.parentNode.removeChild(script);
-        cachedDashboardData = data.data || data;
-        resolve(cachedDashboardData);
-      };
-
-      const script = document.createElement('script');
-      script.src = `${DASHBOARD_ENDPOINT}?callback=${callbackName}`;
-      script.onerror = (err) => {
-        delete window[callbackName];
-        if (script.parentNode) script.parentNode.removeChild(script);
-        console.error("JSONP fetch failed:", err);
-        reject(err);
-      };
-      document.body.appendChild(script);
-    });
-  }
-
-  async function renderModuleDetails(moduleHash) {
-    try {
-      const data = await loadLiveDashboardMetrics();
-      const backendKey = MODULE_KEYS[moduleHash];
-      
-      if (!data || !backendKey || !data[backendKey]) return;
-
-      const sectionData = data[backendKey];
-      const availableWeeks = Object.keys(sectionData).map(Number).sort((a, b) => b - a);
-
-      if (availableWeeks.length === 0) return;
-
-      const latestWeekNum = availableWeeks[0];
-      const latestWeek = sectionData[latestWeekNum];
-
-      let monthlyTotal = 0;
-      let monthlyPass = 0;
-
-      availableWeeks.forEach(w => {
-        monthlyTotal += sectionData[w].total || 0;
-        monthlyPass += sectionData[w].pass || 0;
-      });
-
-      const weeklyPassRate = latestWeek.total > 0 ? ((latestWeek.pass / latestWeek.total) * 100).toFixed(1) + "%" : "0%";
-      const monthlyPassRate = monthlyTotal > 0 ? ((monthlyPass / monthlyTotal) * 100).toFixed(1) + "%" : "0%";
-
-      const viewContainer = document.getElementById(`view-${moduleHash}`);
-      if (!viewContainer) return;
-
-      const metricValues = viewContainer.querySelectorAll('.metric-val');
-      if (metricValues.length >= 4) {
-        metricValues[0].textContent = Math.round(latestWeek.total).toLocaleString();
-        metricValues[1].textContent = Math.round(monthlyTotal).toLocaleString();
-        metricValues[2].textContent = weeklyPassRate;
-        metricValues[3].textContent = monthlyPassRate;
-      }
-
-      const tableBody = viewContainer.querySelector('.stats-table tbody');
-      if (tableBody) {
-        tableBody.innerHTML = availableWeeks.map(w => {
-          const wData = sectionData[w];
-          const pRate = wData.total > 0 ? ((wData.pass / wData.total) * 100).toFixed(1) + "%" : "0%";
-          return `
-            <tr>
-              <td>Week ${w}</td>
-              <td>${Math.round(wData.total).toLocaleString()}</td>
-              <td>${Math.round(wData.pass).toLocaleString()}</td>
-              <td>${Math.round(wData.fail).toLocaleString()}</td>
-              <td>${pRate}</td>
-            </tr>
-          `;
-        }).join('');
-      }
-    } catch (e) {
-      console.error("Error rendering module details:", e);
-    }
-  }
-
-  function handleRoute() {
-    const rawHash = window.location.hash.replace('#', '').trim();
-    const viewName = routeMeta[rawHash] ? rawHash : 'dashboard';
-
-    document.querySelectorAll('.nav-item').forEach(link => {
-      if (link.getAttribute('data-view') === viewName) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-
-    document.querySelectorAll('.view-container').forEach(view => {
-      view.classList.remove('active-view');
-    });
-
-    const targetView = document.getElementById(`view-${viewName}`);
-    if (targetView) targetView.classList.add('active-view');
-
-    const pageTitle = document.getElementById('pageTitle');
-    const pageSubtitle = document.getElementById('pageSubtitle');
-
-    if (routeMeta[viewName]) {
-      pageTitle.textContent = routeMeta[viewName].title;
-      pageSubtitle.textContent = routeMeta[viewName].subtitle;
-    }
-
-    if (viewName !== 'dashboard') {
-      renderModuleDetails(viewName);
-    }
-
-    document.getElementById('sidebar')?.classList.remove('open');
-    document.getElementById('sidebarOverlay')?.classList.remove('show');
-  }
-
-  window.addEventListener('hashchange', handleRoute);
   window.addEventListener('DOMContentLoaded', () => {
     switchCountryTab('UAE');
-    handleRoute();
+    switchMainView('dashboards');
   });
 
   const sidebar = document.getElementById('sidebar');
